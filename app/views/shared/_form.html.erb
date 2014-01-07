@@ -1,0 +1,10 @@
+<% unless current_user.nil? %>
+    <%= form_tag comment_home_path(:id => @restro.id) do %>
+        <%= label_tag(:message, "How do you like this Restaurant ?") %><br />
+        <%= text_area_tag(:message, nil , :onkeyup=>"countChar(this, 160)") %><br />
+        <%= label_tag :rating%>
+        <%= select_tag :rating,options_for_select(1..5) %>
+        <br/><br/>
+        <%= submit_tag("Share your Review", :id => "post") %>
+    <% end %>
+<% end %>

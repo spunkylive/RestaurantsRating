@@ -1,0 +1,12 @@
+
+<% @restro.ratings.each do |rating| %>
+    <div class="comments">
+      <b>Posted <%= time_ago_in_words(rating.created_at) %> ago by</b>
+      <%= rating.user.name%><br/>
+      Comment : &nbsp; <%= rating.comment %><br/>
+      Rating: &nbsp; <%= rating.rating %><br/><br/>
+    </div>
+<% end %>
+
+
+

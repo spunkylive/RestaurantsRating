@@ -1,0 +1,13 @@
+<%= render :partial => "shared/header" %>
+<h3><%= @location.name %>'s Restaurant</h3>
+<br/>
+
+<% @location.restro_addresses.each do |addr| %>
+    <%= link_to addr.restro.name, home_path(addr.restro.id) %><br/>
+    <%= @location.name %> &nbsp;&nbsp; > &nbsp;&nbsp; <%= addr.addr %>, <%= link_to addr.city.name, city_home_path(addr.city.id) %><br/>
+    <% addr.restro.foods.each do |food| %>
+        <%= link_to food.name, food_home_path(food.id) %>    &nbsp;&nbsp;
+    <% end %>
+    <br/><br/>
+<% end %>
+
