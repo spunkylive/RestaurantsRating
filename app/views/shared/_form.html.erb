@@ -1,4 +1,8 @@
 <% unless current_user.nil? %>
+    <h2>Share your Comments</h2>
+
+    <div id="flash_error" style="color:red;display:none"></div>  <br/>
+
     <%= form_tag comment_home_path(:id => @restro.id) do %>
         <%= label_tag(:message, "How do you like this Restaurant ?") %><br />
         <%= text_area_tag(:message, nil , :onkeyup=>"countChar(this, 160)") %><br />
