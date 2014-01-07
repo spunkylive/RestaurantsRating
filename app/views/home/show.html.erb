@@ -1,7 +1,7 @@
 <%= render :partial => "shared/header" %>
 
 <h3><%= @restro.name %></h3>
-<h5>Rating :  <%= sprintf("%.2f", @restro.ratings.sum(:rating).to_f/@restro.ratings.count.to_f) %> </h5>
+<h5>Rating :  <%= sprintf("%.2f", @restro.ratings.sum(:rating).to_f/@restro.ratings.count.to_f) unless @restro.ratings.count == 0 %> </h5>
 <%= link_to @restro.restro_address.location.name, location_home_path(@restro.restro_address.location.id) %> &nbsp;&nbsp; >
 <% @restro.foods.each do |food| %>
     &nbsp; &nbsp;<%= link_to food.name, food_home_path(food.id) %>

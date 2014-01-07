@@ -10,17 +10,27 @@
     <th>Address</th>
     <th>City</th>
   </tr>
-  <% @restro.each do |restaurant| %>
+  <% unless @restro.nil? %>
+      <% @restro.each do |restaurant| %>
+          <tr>
+            <td><%= link_to restaurant.name, home_path(restaurant.id) %></td>
+            <td><%= link_to restaurant.restro_address.location.name, location_home_path(restaurant.restro_address.location.id) %></td>
+            <td>
+              <% restaurant.foods.each do |food| %>
+                  <%= link_to food.name, food_home_path(food.id) %>
+              <% end %>
+            </td>
+            <td><%= restaurant.restro_address.addr %></td>
+            <td><%= link_to restaurant.restro_address.city.name, city_home_path(restaurant.restro_address.city.id) %></td>
+          </tr>
+      <% end %>
+  <% else %>
       <tr>
-        <td><%= link_to restaurant.name, home_path(restaurant.id) %></td>
-        <td><%= link_to restaurant.restro_address.location.name, location_home_path(restaurant.restro_address.location.id) %></td>
-        <td>
-          <% restaurant.foods.each do |food| %>
-              <%= link_to food.name, food_home_path(food.id) %>
-          <% end %>
-        </td>
-        <td><%= restaurant.restro_address.addr %></td>
-        <td><%= link_to restaurant.restro_address.city.name, city_home_path(restaurant.restro_address.city.id) %></td>
+        <td></td>
+        <td></td>
+        <td>No Record Found.</td>
+        <td></td>
+        <td></td>
       </tr>
 
   <% end %>
